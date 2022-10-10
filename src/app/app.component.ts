@@ -34,6 +34,10 @@ export class AppComponent {
     setInterval(() => {
       this.generateData()
     }, 1000)
+
+    setInterval(() => {
+      this.getBool()
+    }, 1000)
   }
 
   public datasets: ChartDataset[] = [{
@@ -104,6 +108,13 @@ export class AppComponent {
     this.generatedData['Dataset 2'].push({"x": Date.now(), "y": (Math.random() * 10) + 5});
 
     //console.log(this.generatedData)
+  }
+
+  getBool(): void {
+    let tag_name: string = "BaseBOOL";
+    invoke<boolean>("read_bool", { tag: tag_name }).then((value:boolean) => {
+      this.booleanResult = `${value}`;
+    });
   }
 
 

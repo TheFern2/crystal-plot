@@ -5,10 +5,11 @@
 
 mod eip_plc;
 
+use std::sync::Mutex;
 use eip_plc::{EipPlc, EipTagType};
 
 #[derive(serde::Serialize, serde::Deserialize)]
-struct MyState(EipPlc);
+struct MyState(Mutex<EipPlc>);
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
@@ -33,16 +34,23 @@ fn read_bool(tag: &str) ->  String {
 }*/
 
 #[tauri::command]
-fn init_plc(plc: &mut tauri::State<MyState>) {
+fn init_plc(plc: tauri::State<MyState>) {
   // let path="protocol=ab-eip&plc=controllogix&path=1,1&gateway=192.168.1.14&name=".to_string();
   // let mut plc = &mut EipPlc::new(100, path);
   // plc.add_tag("BaseBOOL".to_string(), EipTagType::Bool);
 
   // plc.add_tag("BaseREAL".to_string(), EipTagType::Real);
 
-  plc.0.add_tag("BaseREAL".to_string(), EipTagType::Real);
+  plc.0.lock().unwrap().add_tag("BaseREAL".to_string(), EipTagType::Real);
 
   //plc.add_tag("BaseREAL".to_string(), EipTagType::Real);
+}
+
+#[tauri::command]
+fn read_bool(plc: tauri::State<MyState>, tag: &str) -> bool {
+  let value = plc.0.lock().unwrap().read_bool(tag.to_string());
+
+  return value
 }
 
 fn main() {
@@ -52,8 +60,8 @@ fn main() {
   plc.add_tag("BaseBOOL".to_string(), EipTagType::Bool);
 
   tauri::Builder::default()
-      .manage(MyState(plc))
-      .invoke_handler(tauri::generate_handler![greet, init_plc])
+      .manage(MyState(Mutex::from(plc)))
+      .invoke_handler(tauri::generate_handler![greet, init_plc, read_bool])
       .run(tauri::generate_context!())
       .expect("error while running tauri application");
 }
