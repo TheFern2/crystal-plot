@@ -21,10 +21,12 @@ export class AppComponent {
   greetingMessage = "";
   booleanResult = "";
   generatedData: {[key: string]: Point[]} = {
-    "Dataset 1": [],
-    "Dataset 2": []
+    "BaseBOOL": [],
+    "BaseREAL": []
   };
   currentIndex = 0;
+  boolNum: number = 0;
+  realNum: number = 0;
 
 
   constructor() {
@@ -38,17 +40,21 @@ export class AppComponent {
     setInterval(() => {
       this.getBool()
     }, 1000)
+
+    setInterval(() => {
+      this.getReal()
+    }, 1000)
   }
 
   public datasets: ChartDataset[] = [{
-    label: 'Dataset 1',
+    label: 'BaseBOOL',
     backgroundColor: 'rgba(255, 99, 132, 0.5)',
     borderColor: 'rgb(255, 99, 132)',
     borderDash: [8, 4],
     fill: false,
     data: []
   }, {
-    label: 'Dataset 2',
+    label: 'BaseREAL',
     backgroundColor: 'rgba(54, 162, 235, 0.5)',
     borderColor: 'rgb(54, 162, 235)',
     cubicInterpolationMode: 'monotone',
@@ -104,8 +110,11 @@ export class AppComponent {
     //   this.booleanResult = text;
     // });
 
-    this.generatedData['Dataset 1'].push({"x": Date.now(), "y": Math.random() * 5});
-    this.generatedData['Dataset 2'].push({"x": Date.now(), "y": (Math.random() * 10) + 5});
+    // this.generatedData['Dataset 1'].push({"x": Date.now(), "y": Math.random() * 5});
+    // this.generatedData['Dataset 2'].push({"x": Date.now(), "y": (Math.random() * 10) + 5});
+
+    this.generatedData['BaseBOOL'].push({"x": Date.now(), "y": this.boolNum });
+    this.generatedData['BaseREAL'].push({"x": Date.now(), "y": this.realNum });
 
     //console.log(this.generatedData)
   }
@@ -113,8 +122,21 @@ export class AppComponent {
   getBool(): void {
     let tag_name: string = "BaseBOOL";
     invoke<boolean>("read_bool", { tag: tag_name }).then((value:boolean) => {
-      this.booleanResult = `${value}`;
+      // this.booleanResult = `${value}`;
+       this.boolNum = Number(value);
     });
+
+    //return Number(false);
+  }
+
+  getReal(): void {
+    let tag_name: string = "BaseREAL";
+    invoke<number>("read_real", { tag: tag_name }).then((value:number) => {
+      // this.booleanResult = `${value}`;
+      this.realNum = value;
+    });
+
+    //return -1;
   }
 
 

@@ -53,6 +53,13 @@ fn read_bool(plc: tauri::State<MyState>, tag: &str) -> bool {
   return value
 }
 
+#[tauri::command]
+fn read_real(plc: tauri::State<MyState>, tag: &str) -> f32 {
+  let value = plc.0.lock().unwrap().read_real(tag.to_string());
+
+  return value
+}
+
 fn main() {
 
   let path="protocol=ab-eip&plc=controllogix&path=1,1&gateway=192.168.1.14&name=".to_string();
@@ -61,7 +68,7 @@ fn main() {
 
   tauri::Builder::default()
       .manage(MyState(Mutex::from(plc)))
-      .invoke_handler(tauri::generate_handler![greet, init_plc, read_bool])
+      .invoke_handler(tauri::generate_handler![greet, init_plc, read_bool, read_real])
       .run(tauri::generate_context!())
       .expect("error while running tauri application");
 }
