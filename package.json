@@ -19,6 +19,12 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "@tauri-apps/api": "^1.1.0",
+    "chart.js": "^3.9.1",
+    "chartjs-adapter-luxon": "^1.2.0",
+    "chartjs-plugin-streaming": "^2.0.0",
+    "luxon": "^3.0.4",
+    "ng2-charts": "^3.0.0-rc.7",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
