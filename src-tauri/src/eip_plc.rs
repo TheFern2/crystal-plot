@@ -2,7 +2,8 @@ use std::collections::HashMap;
 use plctag::RawTag;
 
 
-#[derive(PartialEq, serde::Serialize, serde::Deserialize)]
+// #[derive(PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(PartialEq)]
 pub enum EipTagType {
     Bool,
     Real
@@ -21,7 +22,7 @@ pub enum TagResult {
 }
 
 // this could use tag_name, maybe
-#[derive(serde::Serialize, serde::Deserialize)]
+// #[derive(serde::Serialize, serde::Deserialize)]
 struct EipTag {
     raw_tag: RawTag,
     tag_type: EipTagType
@@ -36,7 +37,7 @@ impl EipTag {
     }
 }
 
-#[derive(serde::Serialize, serde::Deserialize)]
+// #[derive(serde::Serialize, serde::Deserialize)]
 pub struct EipPlc {
     timeout: u32,
     path: String,

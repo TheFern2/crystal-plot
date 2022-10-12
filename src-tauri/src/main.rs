@@ -8,7 +8,7 @@ mod eip_plc;
 use std::sync::Mutex;
 use eip_plc::{EipPlc, EipTagType};
 
-#[derive(serde::Serialize, serde::Deserialize)]
+// #[derive(serde::Serialize, serde::Deserialize)]
 struct MyState(Mutex<EipPlc>);
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command

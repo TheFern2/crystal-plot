@@ -2023,19 +2023,20 @@ checksum = "1df8c4ec4b0627e53bdf214615ad287367e482558cf84b109250b37464dc03ae"
 [[package]]
 name = "plctag"
 version = "0.3.0"
-source = "git+https://github.com/TheFern2/plctag-rs#1ea4cf02776abe7e40ec5ca9487b793a58c34d69"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "df0b9ab476654c3b7872deea42141ae2d35235bf28ba088b36dc9d68ca50da05"
 dependencies = [
  "plctag-async",
  "plctag-core",
  "plctag-derive",
  "plctag-log",
- "serde",
 ]
 
 [[package]]
 name = "plctag-async"
 version = "0.3.0"
-source = "git+https://github.com/TheFern2/plctag-rs#1ea4cf02776abe7e40ec5ca9487b793a58c34d69"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6652ab6ae6e528ae2bc403ac5a96a245e7f13e304d439d563605a9a1213a0088"
 dependencies = [
  "futures-util",
  "plctag-core",
@@ -2044,17 +2045,18 @@ dependencies = [
 [[package]]
 name = "plctag-core"
 version = "0.3.1"
-source = "git+https://github.com/TheFern2/plctag-rs#1ea4cf02776abe7e40ec5ca9487b793a58c34d69"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "23d19f8f62bfc21e504eb89835bb6964eb2d896387ba7a9e629edb69e7d1919d"
 dependencies = [
  "paste",
  "plctag-sys",
- "serde",
 ]
 
 [[package]]
 name = "plctag-derive"
 version = "0.2.2"
-source = "git+https://github.com/TheFern2/plctag-rs#1ea4cf02776abe7e40ec5ca9487b793a58c34d69"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "84cee206e1e0d68b35e9f297d95936d9d0468e24c0ac4369fa13512268573755"
 dependencies = [
  "proc-macro-crate",
  "proc-macro2",
@@ -2065,7 +2067,8 @@ dependencies = [
 [[package]]
 name = "plctag-log"
 version = "0.3.0"
-source = "git+https://github.com/TheFern2/plctag-rs#1ea4cf02776abe7e40ec5ca9487b793a58c34d69"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6c54f3e69cf8e16ee8dc1ce8d6f6629774b3ae1367dbb57ec7c4f7ee62ec82ac"
 dependencies = [
  "log",
  "plctag-core",
@@ -2073,8 +2076,9 @@ dependencies = [
 
 [[package]]
 name = "plctag-sys"
-version = "0.3.1"
-source = "git+https://github.com/TheFern2/plctag-rs#1ea4cf02776abe7e40ec5ca9487b793a58c34d69"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d76950c4ae9e6e63c45897cbac05cd8fc655bd58d5cf94219a6cb8dd30c7c268"
 dependencies = [
  "bindgen",
  "cmake",

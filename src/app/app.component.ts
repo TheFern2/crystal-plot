@@ -122,21 +122,15 @@ export class AppComponent {
   getBool(): void {
     let tag_name: string = "BaseBOOL";
     invoke<boolean>("read_bool", { tag: tag_name }).then((value:boolean) => {
-      // this.booleanResult = `${value}`;
        this.boolNum = Number(value);
     });
-
-    //return Number(false);
   }
 
   getReal(): void {
     let tag_name: string = "BaseREAL";
     invoke<number>("read_real", { tag: tag_name }).then((value:number) => {
-      // this.booleanResult = `${value}`;
       this.realNum = value;
     });
-
-    //return -1;
   }
 
 
